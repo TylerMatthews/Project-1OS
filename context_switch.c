@@ -63,7 +63,7 @@ int main(int argc, const char * argv[])
             //pipe input closed
             close(pipes[0]);
             //output to pip
-            write(pipes[1], pipe_String, (strlen(pipe_String)+1));
+            write(pipes[1], pipeString, (strlen(pipeString)+1));
             exit(0);
         }
     }
