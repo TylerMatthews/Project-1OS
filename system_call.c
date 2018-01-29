@@ -1,5 +1,5 @@
 //**********************************************************************
-// Authors: Tyler Matthews, Matt Monik 
+// Authors: Tyler Matthews, Matt Monnik 
 // Date: 01/26/2018
 // Program to calculate the time for a System call and context switch
 //
