@@ -40,16 +40,8 @@ int main(int argc, const char * argv[])
     unsigned int length = sizeof(affin);
     CPU_SET(0, &affin);
     
-
-    int     pipes[2];
-    int     byte_l;
-    char    pipeString[] = "Pipe message!\n";
-    pid_t   childId;
-    char    read_buffer[600];
-    
-	double sysStart, sysStop, sysCallDur, dur, funcCallDur;
-
-	int i,p;
+    double sysStart, sysStop, sysCallDur, dur, funcCallDur;
+    int i,p;
     long k;
     int n;
     printf("Start Running \n");
