@@ -1,10 +1,11 @@
 //**********************************************************************
 // Authors: Tyler Matthews, Matt Monik 
 // Date: 01/26/2018
-// Program to calculate the time for a System call
-//
+// Program to calculate the time for a System call and context switch
 //
 //**********************************************************************
+
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,12 +15,13 @@
 #include <sys/types.h>
 #include <pthread.h>
 #include <sched.h>
+#include <time.h>
 
 //Return system time
 double calctime()
 {
 	double timeinsec = 0.0;
-	struct value ctime;
+	struct timeval ctime;
 	gettimeofday(&ctime, (struct timezone *)0);
 	timeinsec = (double)(ctime.tv_sec + ctime.tv_usec * 1.0e-3);
 
@@ -33,13 +35,21 @@ int main(int argc, const char * argv[])
     double end;
 
     //Set thread to one processor
-    cpu_set_t  affin;
+    cpu_set_t affin;
     CPU_ZERO(&affin);
     unsigned int length = sizeof(affin);
     CPU_SET(0, &affin);
-	
-    double sysStart, sysStop, sysCallDur, dur, funcCallDur;
-    int i,p;
+    
+
+    int     pipes[2];
+    int     byte_l;
+    char    pipeString[] = "Pipe message!\n";
+    pid_t   childId;
+    char    read_buffer[600];
+    
+	double sysStart, sysStop, sysCallDur, dur, funcCallDur;
+
+	int i,p;
     long k;
     int n;
     printf("Start Running \n");
@@ -52,15 +62,16 @@ int main(int argc, const char * argv[])
 		i = getpid();
 	}
     //record the time in which the system call operations ends
-    sysStop = calctime();
+	sysStop = calctime();
 
     //system call time
     dur = sysStop - sysStart;
 
     //estimated system call time
 	sysCallDur = (sysStop - sysStart) / itr_a;
-	printf("Average system call time is %f\n", sysCallDur);
+	printf("Average system call time is %0.10f\n", sysCallDur);
     
-    return(0); 
+    return(0);
+    
 }
 
