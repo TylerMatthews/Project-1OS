@@ -1,9 +1,10 @@
 //**********************************************************************
-// Authors: Tyler Matthews, Matt Monik 
+// Authors: Tyler Matthews, Matt Monnik 
 // Date: 01/26/2018
 // Program to calculate the time for a context switch
 //
 //**********************************************************************
+
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
