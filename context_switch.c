@@ -1,7 +1,7 @@
 //**********************************************************************
 // Authors: Tyler Matthews, Matt Monik 
 // Date: 01/26/2018
-// Program to calculate the time for a System call and context switch
+// Program to calculate the time for a System call
 //
 //
 //**********************************************************************
@@ -53,7 +53,6 @@ int main(int argc, const char * argv[])
         perror("fork");
         exit(1);
     }
-    
     beginning = calctime();
    
     if ( (sched_setaffinity(0, length, &affin) ) < 1)
@@ -75,10 +74,7 @@ int main(int argc, const char * argv[])
         printf("Pipe message: %s", read_buffer);
 		printf("Context switch time: %f \n", end - beginning);
         close(pipes[1]);
-        
     }
-    
-
     return(0);
     
 }
