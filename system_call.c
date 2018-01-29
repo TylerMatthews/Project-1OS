@@ -45,9 +45,9 @@ int main(int argc, const char * argv[])
     pid_t   childId;
     char    read_buffer[600];
     
-	double sysStart, sysStop, sysCallDur, dur, funcCallDur;
+    double sysStart, sysStop, sysCallDur, dur, funcCallDur;
 
-	int i,p;
+    int i,p;
     long k;
     int n;
     printf("Start Running \n");
@@ -62,7 +62,7 @@ int main(int argc, const char * argv[])
     //record the time in which the system call operations ends
 	sysStop = calctime();
 
-    //systaem call time
+    //system call time
     dur = sysStop - sysStart;
 
     //estimated system call time
