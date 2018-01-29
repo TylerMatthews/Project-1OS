@@ -62,14 +62,14 @@ int main(int argc, const char * argv[])
         {       
             //pipe input closed
             close(pipes[0]);
-            //output to pip
+            //output to pipe
             write(pipes[1], pipeString, (strlen(pipeString)+1));
             exit(0);
         }
     }
     else
     {
-		//Parent reads pip input
+	//Parent reads pipe input
         byte_l = read(pipes[0], read_buffer, sizeof(read_buffer));
         end = calctime();
         printf("Pipe message: %s", read_buffer);
