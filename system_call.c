@@ -1,7 +1,7 @@
 //**********************************************************************
 // Authors: Tyler Matthews, Matt Monik 
 // Date: 01/26/2018
-// Program to calculate the time for a System call and context switch
+// Program to calculate the time for a System call
 //
 //
 //**********************************************************************
@@ -37,16 +37,8 @@ int main(int argc, const char * argv[])
     CPU_ZERO(&affin);
     unsigned int length = sizeof(affin);
     CPU_SET(0, &affin);
-    
-
-    int     pipes[2];
-    int     byte_l;
-    char    pipeString[] = "Pipe message!\n";
-    pid_t   childId;
-    char    read_buffer[600];
-    
+	
     double sysStart, sysStop, sysCallDur, dur, funcCallDur;
-
     int i,p;
     long k;
     int n;
@@ -60,7 +52,7 @@ int main(int argc, const char * argv[])
 		i = getpid();
 	}
     //record the time in which the system call operations ends
-	sysStop = calctime();
+    sysStop = calctime();
 
     //system call time
     dur = sysStop - sysStart;
@@ -69,7 +61,6 @@ int main(int argc, const char * argv[])
 	sysCallDur = (sysStop - sysStart) / itr_a;
 	printf("Average system call time is %f\n", sysCallDur);
     
-    return(0);
-    
+    return(0); 
 }
 
