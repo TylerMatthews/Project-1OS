@@ -1,9 +1,9 @@
 all: runsc runcs
 
 runsc: system_call.c
-	gcc -o runsc system_call.c -I
+	gcc -o runsc system_call.c
 
 runcs: context_switch.c
-	gcc -o runcs context_switch.c -I
+	gcc -o runcs context_switch.c
 
 clean
